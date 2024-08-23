@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -25,8 +27,11 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import { useState } from "react";
 
 export const Navbar = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -63,7 +68,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -104,6 +109,14 @@ export const Navbar = () => {
             Sponsor
           </Button>
         </NavbarItem>
+
+        {isLogin ? (
+          ""
+        ) : (
+          <Button as={Link} href={siteConfig.routes.login}>
+            Login
+          </Button>
+        )}
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">

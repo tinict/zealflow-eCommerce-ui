@@ -9,6 +9,7 @@
 		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
 	},
 	"dependencies": {
+		"@ant-design/icons": "^5.4.0",
 		"@nextui-org/button": "2.0.37",
 		"@nextui-org/code": "2.0.32",
 		"@nextui-org/input": "2.2.4",
@@ -22,6 +23,7 @@
 		"@nextui-org/theme": "2.2.9",
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
+		"antd": "^5.20.2",
 		"clsx": "2.1.1",
 		"framer-motion": "~11.1.1",
 		"intl-messageformat": "^10.5.0",
