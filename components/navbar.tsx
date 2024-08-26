@@ -30,7 +30,7 @@ import {
 import { useState } from "react";
 
 export const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const searchInput = (
     <Input
@@ -111,7 +111,13 @@ export const Navbar = () => {
         </NavbarItem>
 
         {isLogin ? (
-          ""
+          <Link className="w-[32px] h-[32px] cursor-pointer" href={siteConfig.routes.profile}>
+            <img
+            className="w-full h-full rounded-full"
+              src="https://i.pinimg.com/564x/a7/13/01/a71301bf8fedea65a87068641c3658f9.jpg"
+              alt="account"
+            />
+          </Link>
         ) : (
           <Button as={Link} href={siteConfig.routes.login}>
             Login

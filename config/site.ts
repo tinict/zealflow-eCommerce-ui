@@ -5,7 +5,14 @@ export const siteConfig = {
   description: "Make beautiful websites regardless of your design experience.",
   routes: {
     login: '/login',
-    register: '/register'
+    register: '/register',
+    profile: '/profile',
+    order: '/profile/order',
+    chat: '/profile/chat',
+    post: '/profile/post',
+    orderPackage: '/profile/order-package',
+    favourite: '/profile/favourite',
+
   },
   navItems: [
     {

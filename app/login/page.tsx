@@ -14,15 +14,15 @@ function LoginPage() {
         <img className="w-[60%]" src={images.logo.src} alt="logo" />
       </div>
 
-      <p className="text-[32px] text-main text-center font-semibold mb-4">Đăng nhập</p>
+      <p className="text-[32px] text-red_main text-center font-semibold mb-4">Đăng nhập</p>
 
       <Input className="h-[40px] rounded-none" placeholder="emali..." />
       <Input className="h-[40px] rounded-none" placeholder="password..." />
 
-      <Button className="bg-main h-[40px] rounded-none text-white font-normal">Đăng nhập</Button>
+      <Button className="bg-red_main h-[40px] rounded-none text-white font-normal">Đăng nhập</Button>
       <p>
         Bạn mới biết đến Echop?{" "}
-        <Link className="text-main" href={siteConfig.routes.register}>
+        <Link className="text-red_main" href={siteConfig.routes.register}>
           Đăng ký
         </Link>
       </p>
