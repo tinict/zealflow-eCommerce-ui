@@ -1,18 +1,19 @@
-import { images } from "@/assets";
 import React from "react";
+
+import { images } from "@/assets";
 
 function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="w-screen h-screen relative overflow-hidden">
       <img
+        alt="HoaTietTrai"
         className="absolute -z-50"
         src={images.HoaTietTrai.src}
-        alt="HoaTietTrai"
       />
       <img
+        alt="HoaTietPhai"
         className="absolute bottom-0 right-0 -z-50 hoa-tiet-phai"
         src={images.HoaTietPhai.src}
-        alt="HoaTietPhai"
       />
       <div className="w-full h-full flex z-10">
         <div className="flex-1 h-full flex items-center justify-center">
@@ -20,7 +21,7 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="flex-1 lg:flex hidden justify-center">
-          <img src={images.imgLogin.src} alt="imgLogin" />
+          <img alt="imgLogin" src={images.imgLogin.src} />
         </div>
       </div>
     </div>

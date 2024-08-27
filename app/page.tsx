@@ -23,7 +23,7 @@ export default function Home() {
             Beautiful, fast and modern React UI library.
           </h2>
         </div>
-  
+
         <div className="flex gap-3">
           <Link
             isExternal
@@ -45,7 +45,7 @@ export default function Home() {
             GitHub
           </Link>
         </div>
-  
+
         <div className="mt-8">
           <Snippet hideCopyButton hideSymbol variant="bordered">
             <span>

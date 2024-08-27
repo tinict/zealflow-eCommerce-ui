@@ -1,6 +1,7 @@
-import { Navbar } from "@/components/navbar";
 import React from "react";
 import { Link } from "@nextui-org/link";
+
+import { Navbar } from "@/components/navbar";
 
 function DefaultLayout({ children }: { children: React.ReactNode }) {
   return (
