@@ -3,6 +3,17 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "Next.js + NextUI",
   description: "Make beautiful websites regardless of your design experience.",
+  routes: {
+    login: '/login',
+    register: '/register',
+    profile: '/profile',
+    order: '/profile/order',
+    chat: '/profile/chat',
+    post: '/profile/post',
+    orderPackage: '/profile/order-package',
+    favourite: '/profile/favourite',
+
+  },
   navItems: [
     {
       label: "Home",
