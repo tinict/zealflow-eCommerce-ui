@@ -8,7 +8,6 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  getKeyValue,
 } from "@nextui-org/react";
 import ButtonConfig from "@/components/Button";
 import EvaluateModal from "@/components/modals/order/EvaluateModal";
@@ -140,7 +139,7 @@ function OrderPage() {
     []
   );
   return (
-    <div>
+    <>
       <div className="w-full h-[80px] bg-yellow_main flex justify-center items-center relative">
         <h1 className="text-[24px] font-medium text-red_main">
           Đơn hàng của tôi
@@ -151,7 +150,9 @@ function OrderPage() {
           <TableHeader>
             {columns.map((column) => (
               <TableColumn
-                className={`${column.key === "action" && "w-[120px]"}`}
+                className={`font-medium text-black 
+                  ${column.key === "status" && "w-[172px]"}
+                  ${column.key === "action" && "w-[120px]"}`}
                 key={column.key}
               >
                 {column.label}
@@ -162,7 +163,9 @@ function OrderPage() {
             {(item) => (
               <TableRow key={item.id}>
                 {(columnKey) => (
-                  <TableCell>{renderCell(item, columnKey)}</TableCell>
+                  <TableCell>
+                    {renderCell(item, columnKey)}
+                  </TableCell>
                 )}
               </TableRow>
             )}
@@ -173,7 +176,7 @@ function OrderPage() {
           <ButtonConfig bordered>Xem thêm</ButtonConfig>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

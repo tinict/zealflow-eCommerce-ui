@@ -10,6 +10,8 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { FaCamera } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import { AiFillLike } from "react-icons/ai";
+import Search from "@/components/Search";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 
 const users = [
   {
@@ -36,7 +38,7 @@ const users = [
         time: "26 th8",
         status: 1, // 1: Đã xem, 2: chưa xem
         message: "An com chua",
-      }
+      },
     ],
   },
   {
@@ -101,22 +103,6 @@ const users = [
   },
 ];
 
-const searchInput = (
-  <Input
-    aria-label="Search"
-    classNames={{
-      inputWrapper: "bg-default-100",
-      input: "text-sm",
-    }}
-    labelPlacement="outside"
-    placeholder="Search..."
-    startContent={
-      <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-    }
-    type="search"
-  />
-);
-
 function ChatPage() {
   const [isUser, setIsUser] = useState<any>(users[0]);
   const [dataUser, setDataUser] = useState<any>([]);
@@ -161,7 +147,7 @@ function ChatPage() {
   };
 
   return (
-    <div>
+    <>
       <div className="w-full h-[80px] bg-yellow_main flex justify-center items-center relative">
         <h1 className="text-[24px] font-medium text-red_main">
           Lịch sử đoạn chat
@@ -169,10 +155,13 @@ function ChatPage() {
       </div>
       <div className="ml-[268px] flex">
         <div className="max-w-[320px]">
-          <div className="p-4">{searchInput}</div>
+          <Search className="p-4" />
           <div>
             {dataUser.map((user: any, index: number) => (
               <ChatSidebarItem
+                className="flex justify-between p-4 cursor-pointer
+              hover:bg-[#FFF4F4] focus:bg-[#FFF4F4] 
+              "
                 onClick={() => handleClickUser(index)}
                 key={index}
                 user={user}
@@ -206,7 +195,20 @@ function ChatPage() {
                 </div>
               </div>
 
-              <HiOutlineDotsVertical />
+              <div className="relative flex justify-end items-center gap-2">
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button isIconOnly size="sm" variant="light">
+                      <HiOutlineDotsVertical className="text-black" />
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu>
+                    <DropdownItem>View</DropdownItem>
+                    <DropdownItem>Edit</DropdownItem>
+                    <DropdownItem>Delete</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
             </div>
 
             <div className="h-full flex-1 flex flex-col justify-between relative">
@@ -227,9 +229,18 @@ function ChatPage() {
                         )}
                       </div>
                     ) : (
-                      <div className="float-start max-w-[60%] shadow-sm">
-                        <p className="mb-1">{mes.time}</p>
-                        <p className="p-3 bg-white rounded-lg">{mes.message}</p>
+                      <div className="float-start max-w-[60%] shadow-sm flex gap-2">
+                        <img
+                          className="w-[32px] h-[32px] rounded-full"
+                          src={isUser.url_avatar}
+                          alt="avatar"
+                        />
+                        <div>
+                          <p className="mb-1">{mes.time}</p>
+                          <p className="p-3 bg-white rounded-lg">
+                            {mes.message}
+                          </p>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -263,7 +274,7 @@ function ChatPage() {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
