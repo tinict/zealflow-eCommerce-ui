@@ -11,10 +11,11 @@ function ButtonConfig({
   return (
     <Button
       {...props}
-      className={`${className}
-      px-5 py-3 rounded-none  font-normal
-      ${full && "w-full"}
-      ${bordered ? "bg-white text-red_main border-2 border-red_main" : "bg-red_main text-white"}
+      className={`
+        px-5 py-3 rounded-none  font-normal
+        ${full && "w-full"}
+        ${bordered ? "bg-white text-red_main border-2 border-red_main" : "bg-red_main text-white"}
+        ${className}
     `}
     >
       <p>{children}</p>

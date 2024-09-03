@@ -10,9 +10,9 @@ import { Button } from "@nextui-org/button";
 function LoginPage() {
   return (
     <div className="bg-white md:min-w-[420px] p-10 rounded-md shadow-2xl flex flex-col gap-4 item-center z-50">
-      <div className="w-full flex justify-center my-4">
+      <Link href={siteConfig.routes.home} className="w-full flex justify-center my-4">
         <img className="w-[60%]" src={images.logo.src} alt="logo" />
-      </div>
+      </Link>
 
       <p className="text-[32px] text-red_main text-center font-semibold mb-4">Đăng nhập</p>
 
