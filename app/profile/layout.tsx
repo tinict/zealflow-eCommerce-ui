@@ -52,7 +52,7 @@ function ProfileLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <DefaultLayout>
-      <div className="w-[240px] h-[80vh] absolute top-[50%] translate-y-[-46%] translate-x-[28px] bg-white rounded-lg shadow-xl z-10">
+      <div className="w-[240px] h-[80vh] absolute top-[50%] translate-y-[-38%] translate-x-[40px] bg-white rounded-lg shadow-xl z-10">
         <div className="flex flex-col items-center p-6 gap-2">
           <img
             className="w-[52px] h-[52px] rounded-full"

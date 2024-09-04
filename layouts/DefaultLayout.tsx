@@ -1,13 +1,12 @@
-import { Navbar } from "@/components/navbar";
 import React from "react";
-import { Link } from "@nextui-org/link";
 import Footer from "@/components/footer";
+import NavbarHeader from "@/components/navbar";
 
 function DefaultLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Navbar />
-      <div className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+      <NavbarHeader />
+      <div>
         {children}
       </div>
       <Footer />
