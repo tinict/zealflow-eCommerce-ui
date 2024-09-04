@@ -1,154 +1,135 @@
 "use client";
 
-import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
-import { useState } from "react";
-
+import { images } from "@/assets";
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
 import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+} from "@nextui-org/navbar";
+import Link from "next/link";
+import React, { useState } from "react";
 
-export const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(false);
+import { FaRegCircleQuestion } from "react-icons/fa6";
+import { FiSearch } from "react-icons/fi";
+import { MdOutlinePostAdd } from "react-icons/md";
+import ButtonConfig from "./Button";
 
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+const countries = [
+  {
+    name: "Việt Nam",
+    flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/640px-Flag_of_Vietnam.svg.png",
+  },
+  {
+    name: "English",
+    flag: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTERnbE2vj5IueStB7LDbcN0TSrOcJSF6o9Jg&s",
+  },
+];
+
+function NavbarHeader() {
+  const [country, setCountry] = useState<any | undefined>(countries[0]);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const handleChangeCountry = (name: string) => {
+    const selectedCountry = countries.find((item) => item.name === name);
+    setCountry(selectedCountry);
+  };
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
-          </NextLink>
-        </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
-      </NavbarContent>
-
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
-        </NavbarItem>
-
-        {isLogin ? (
-          ""
-        ) : (
-          <Button as={Link} href={siteConfig.routes.login}>
-            Login
-          </Button>
-        )}
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
-
-      <NavbarMenu>
-        {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+    <div className="z-50">
+      <div className="flex items-center justify-between p-2 bg-[#FFF5BC] text-[12px]">
+        <div className="flex items-center gap-1 text-[#750000]">
+          <FaRegCircleQuestion />
+          <p>Hotline:</p>
+          <p className="font-medium">001 234-567-890</p>
         </div>
-      </NavbarMenu>
-    </NextUINavbar>
+
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-[36px] h-[20px] overflow-hidden">
+              <img
+                className="w-full h-full object-cover object-center"
+                src={country.flag}
+                alt="flag"
+              />
+            </div>
+            <select
+              className="outline-none bg-transparent"
+              defaultValue={country.name}
+              onChange={(e) => handleChangeCountry(e.target.value)}
+            >
+              {countries.map((item, index) => (
+                <option key={index}>{item.name}</option>
+              ))}
+            </select>
+          </div>
+
+          <Link href={""}>Về chúng tôi</Link>
+
+          <Link href={""}>Liên hệ</Link>
+        </div>
+      </div>
+      <Navbar
+        maxWidth="full"
+        className="w-screen px-[160px] shadow-md"
+        position="static"
+      >
+        <NavbarBrand>
+          <Link href={siteConfig.routes.home}>
+            <img
+              className="min-w-[100px] h-[36px]"
+              src={images.logo.src}
+              alt="logo"
+            />
+          </Link>
+        </NavbarBrand>
+        <NavbarContent className="hidden sm:flex gap-5" justify="center">
+          <NavbarItem>
+            <Link href="#">Danh mục sản phẩm</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#">Trao đổi hàng hóa</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#">Mua bán đồ secondhand</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#">Hàng cũ đem tặng</Link>
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarContent justify="end">
+          <NavbarItem>
+            <FiSearch className="text-[24px] text-red_main cursor-pointer" />
+          </NavbarItem>
+          <NavbarItem>
+            <Link href={siteConfig.routes.post}>
+              <ButtonConfig>Đăng bài</ButtonConfig>
+            </Link>
+          </NavbarItem>
+          {isLogin ? (
+            <NavbarItem>
+              <Link href={siteConfig.routes.profile}>
+                <div className="w-[28px] h-[28px] rounded-full overflow-hidden">
+                  <img
+                    className="w-full h-full object-cover object-center"
+                    src="https://i.pinimg.com/564x/a7/13/01/a71301bf8fedea65a87068641c3658f9.jpg"
+                    alt="avatar"
+                  />
+                </div>
+              </Link>
+            </NavbarItem>
+          ) : (
+            <NavbarItem>
+              <Link href={siteConfig.routes.login}>
+                <ButtonConfig bordered>Đăng Nhập</ButtonConfig>
+              </Link>
+            </NavbarItem>
+          )}
+        </NavbarContent>
+      </Navbar>
+    </div>
   );
-};
+}
+
+export default NavbarHeader;
