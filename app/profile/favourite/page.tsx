@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import {
   Table,
   TableBody,
@@ -99,7 +98,7 @@ function FavouritePage() {
       switch (columnKey) {
         case "post":
           return (
-            <img className="w-[60px] h-[60px]" src={cellValue} alt="post" />
+            <img alt="post" className="w-[60px] h-[60px]" src={cellValue} />
           );
         case "status":
           return (
@@ -112,17 +111,16 @@ function FavouritePage() {
         case "action":
           return (
             <div className="relative flex justify-end items-center gap-2">
-              <ButtonConfig>
-                Mua ngay
-              </ButtonConfig>
+              <ButtonConfig>Mua ngay</ButtonConfig>
             </div>
           );
         default:
           return cellValue;
       }
     },
-    []
+    [],
   );
+
   return (
     <>
       <div className="w-full h-[80px] bg-yellow_main flex justify-center items-center relative">
@@ -136,17 +134,17 @@ function FavouritePage() {
           <ButtonConfig bordered>Xóa</ButtonConfig>
         </div>
         <Table
+          aria-label="Example table with dynamic content"
           color="danger"
           selectionMode="multiple"
-          aria-label="Example table with dynamic content"
         >
           <TableHeader>
             {columns.map((column) => (
               <TableColumn
+                key={column.key}
                 className={`font-medium text-black
                   ${column.key === "status" && "w-[172px]"}
                   ${column.key === "action" && "w-[80px] content-center z-10"}`}
-                key={column.key}
               >
                 {column.label}
               </TableColumn>

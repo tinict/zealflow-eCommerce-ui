@@ -1,6 +1,7 @@
 import React from "react";
-import { SearchIcon } from "./icons";
 import { Input } from "@nextui-org/input";
+
+import { SearchIcon } from "./icons";
 
 function Search({ ...props }: any) {
   return (

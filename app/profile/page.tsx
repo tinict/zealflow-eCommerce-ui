@@ -1,10 +1,10 @@
 "use client";
 
+import { useState } from "react";
+
 import ButtonConfig from "@/components/Button";
 import InputConfig from "@/components/inputs/InputConfig";
 import InputAddress from "@/components/inputs/InputAddress";
-import { Input } from "@nextui-org/input";
-import { useEffect, useState } from "react";
 
 function ProfilePage() {
   const [isEdit, setIsEdit] = useState(false);
@@ -46,14 +46,14 @@ function ProfilePage() {
         <div className="flex gap-10 border-b-1 border-black pb-8 mb-6">
           <div>
             <img
+              alt="avatar"
               className="w-[100px] h-[100px] rounded-full mb-2"
               src="https://i.pinimg.com/564x/a7/13/01/a71301bf8fedea65a87068641c3658f9.jpg"
-              alt="avatar"
             />
             <ButtonConfig
+              full
               className={`${isEdit && "hidden"}`}
               onClick={() => setIsEdit(true)}
-              full
             >
               Chỉnh sửa
             </ButtonConfig>
@@ -63,55 +63,55 @@ function ProfilePage() {
               <div className="flex-1">
                 <label htmlFor="name">Tên</label>
                 <InputConfig
-                  id="name"
                   disabled={!isEdit}
+                  id="name"
+                  placeholder="Tên"
                   value={account.name}
                   onChange={(e: any) =>
                     setAccount({ ...account, name: e.target.value })
                   }
-                  placeholder="Tên"
                 />
               </div>
               <div className="flex-1">
                 <label htmlFor="phone">Số điện thoại</label>
                 <InputConfig
-                  id="phone"
                   disabled={!isEdit}
+                  id="phone"
+                  placeholder="Số điện thoại"
+                  value={account.phone}
                   onChange={(e: any) =>
                     setAccount({ ...account, phone: e.target.value })
                   }
-                  value={account.phone}
-                  placeholder="Số điện thoại"
                 />
               </div>
             </div>
             <div>
               <label htmlFor="email">Email</label>
               <InputConfig
-                id="email"
                 disabled={!isEdit}
+                id="email"
+                placeholder="Email"
+                value={account.email}
                 onChange={(e: any) =>
                   setAccount({ ...account, email: e.target.value })
                 }
-                value={account.email}
-                placeholder="Email"
               />
             </div>
             <div>
               <p>Địa chỉ</p>
               <InputAddress
-                edit={isEdit}
                 address={account}
+                edit={isEdit}
                 setAddress={setAccount}
               />
             </div>
             <InputConfig
               disabled={!isEdit}
+              placeholder="Địa chỉ chi tiết"
+              value={account.addressDetail}
               onChange={(e: any) =>
                 setAccount({ ...account, addressDetail: e.target.value })
               }
-              value={account.addressDetail}
-              placeholder="Địa chỉ chi tiết"
             />
           </div>
         </div>
@@ -126,12 +126,12 @@ function ProfilePage() {
           <div className="flex gap-10 mt-6">
             <div>
               <img
+                alt="cccd"
                 className="w-[100px] h-[100px] rounded-lg border-2 border-red_main border-dashed cursor-pointer mb-2"
                 src={
                   securityInfor.url_CCCD ||
                   "https://t4.ftcdn.net/jpg/04/81/13/43/240_F_481134373_0W4kg2yKeBRHNEklk4F9UXtGHdub3tYk.jpg"
                 }
-                alt="cccd"
               />
               <p>
                 <small>Ảnh CCCD/Hộ chiếu</small>
@@ -143,39 +143,39 @@ function ProfilePage() {
                 <div className="w-full flex gap-6 justify-between mt-2">
                   <InputConfig
                     disabled={!isEdit}
+                    placeholder="Số CCCD/Hộ chiếu"
+                    value={securityInfor.CCCD}
                     onChange={(e: any) =>
                       setSecurityInfor({
                         ...securityInfor,
                         CCCD: e.target.value,
                       })
                     }
-                    value={securityInfor.CCCD}
-                    placeholder="Số CCCD/Hộ chiếu"
                   />
                   <InputConfig
-                    type="date"
                     disabled={!isEdit}
+                    type="date"
+                    value={securityInfor.date_of_issue}
                     onChange={(e: any) =>
                       setSecurityInfor({
                         ...securityInfor,
                         date_of_issue: e.target.value,
                       })
                     }
-                    value={securityInfor.date_of_issue}
                   />
                 </div>
               </div>
               <div>
                 <InputConfig
                   disabled={!isEdit}
+                  placeholder="Nới cấp"
+                  value={securityInfor.place_of_issue}
                   onChange={(e: any) =>
                     setSecurityInfor({
                       ...securityInfor,
                       place_of_issue: e.target.value,
                     })
                   }
-                  value={securityInfor.place_of_issue}
-                  placeholder="Nới cấp"
                 />
               </div>
               <div className="w-full flex gap-6 justify-between">
@@ -184,14 +184,14 @@ function ProfilePage() {
                   <InputConfig
                     disabled={!isEdit}
                     id="gender"
+                    placeholder="Giới tính"
+                    value={securityInfor.gender}
                     onChange={(e: any) =>
                       setSecurityInfor({
                         ...securityInfor,
                         gender: e.target.value,
                       })
                     }
-                    value={securityInfor.gender}
-                    placeholder="Giới tính"
                   />
                 </div>
                 <div className="flex-1">
@@ -200,13 +200,13 @@ function ProfilePage() {
                     disabled={!isEdit}
                     id="dob"
                     type="date"
+                    value={securityInfor.date_of_birth}
                     onChange={(e: any) =>
                       setSecurityInfor({
                         ...securityInfor,
                         date_of_birth: e.target.value,
                       })
                     }
-                    value={securityInfor.date_of_birth}
                   />
                 </div>
               </div>
@@ -216,7 +216,9 @@ function ProfilePage() {
           <div
             className={`${!isEdit && "hidden"} flex justify-end gap-6 mt-10`}
           >
-            <ButtonConfig onClick={handleCancel} bordered>Hủy</ButtonConfig>
+            <ButtonConfig bordered onClick={handleCancel}>
+              Hủy
+            </ButtonConfig>
             <ButtonConfig onClick={handleSave}>Lưu</ButtonConfig>
           </div>
         </div>

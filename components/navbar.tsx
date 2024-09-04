@@ -1,7 +1,5 @@
 "use client";
 
-import { images } from "@/assets";
-import { siteConfig } from "@/config/site";
 import {
   Navbar,
   NavbarBrand,
@@ -10,11 +8,13 @@ import {
 } from "@nextui-org/navbar";
 import Link from "next/link";
 import React, { useState } from "react";
-
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
-import { MdOutlinePostAdd } from "react-icons/md";
+
 import ButtonConfig from "./Button";
+
+import { siteConfig } from "@/config/site";
+import { images } from "@/assets";
 
 const countries = [
   {
@@ -33,6 +33,7 @@ function NavbarHeader() {
 
   const handleChangeCountry = (name: string) => {
     const selectedCountry = countries.find((item) => item.name === name);
+
     setCountry(selectedCountry);
   };
 
@@ -49,9 +50,9 @@ function NavbarHeader() {
           <div className="flex items-center gap-2">
             <div className="w-[36px] h-[20px] overflow-hidden">
               <img
+                alt="flag"
                 className="w-full h-full object-cover object-center"
                 src={country.flag}
-                alt="flag"
               />
             </div>
             <select
@@ -71,16 +72,16 @@ function NavbarHeader() {
         </div>
       </div>
       <Navbar
-        maxWidth="full"
         className="w-screen px-[160px] shadow-md"
+        maxWidth="full"
         position="static"
       >
         <NavbarBrand>
           <Link href={siteConfig.routes.home}>
             <img
+              alt="logo"
               className="min-w-[100px] h-[36px]"
               src={images.logo.src}
-              alt="logo"
             />
           </Link>
         </NavbarBrand>
@@ -112,9 +113,9 @@ function NavbarHeader() {
               <Link href={siteConfig.routes.profile}>
                 <div className="w-[28px] h-[28px] rounded-full overflow-hidden">
                   <img
+                    alt="avatar"
                     className="w-full h-full object-cover object-center"
                     src="https://i.pinimg.com/564x/a7/13/01/a71301bf8fedea65a87068641c3658f9.jpg"
-                    alt="avatar"
                   />
                 </div>
               </Link>

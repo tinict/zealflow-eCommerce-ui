@@ -7,9 +7,9 @@ function ChatSidebarItem({ user, ...props }: any) {
     <div {...props}>
       <div className="flex items-center gap-3">
         <img
+          alt="avatar"
           className="w-[40px] h-[40px] rounded-full"
           src={user.url_avatar}
-          alt="avatar"
         />
         <div>
           <p className="text-[14px] font-medium leading-3">{user.name}</p>
@@ -21,7 +21,7 @@ function ChatSidebarItem({ user, ...props }: any) {
       <div className="flex flex-col gap-1 items-end">
         <small>{mostRecentMes.time}</small>
         {mostRecentMes.status === 2 && mostRecentMes.user !== 1 && (
-          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+          <div className="w-2 h-2 bg-red-400 rounded-full" />
         )}
       </div>
     </div>

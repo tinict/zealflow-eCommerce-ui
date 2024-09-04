@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import {
   Table,
   TableBody,
@@ -10,10 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 import ButtonConfig from "@/components/Button";
 import EditModal from "@/components/modals/post/EditModal";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import Search from "@/components/Search";
 
 const rows = [
@@ -102,7 +101,7 @@ function PostPage() {
       switch (columnKey) {
         case "post":
           return (
-            <img className="w-[60px] h-[60px]" src={cellValue} alt="post" />
+            <img alt="post" className="w-[60px] h-[60px]" src={cellValue} />
           );
         case "status":
           return (
@@ -123,8 +122,9 @@ function PostPage() {
           return cellValue;
       }
     },
-    []
+    [],
   );
+
   return (
     <>
       <div className="w-full h-[80px] bg-yellow_main flex justify-center items-center relative">
@@ -133,15 +133,15 @@ function PostPage() {
         </h1>
       </div>
       <div className="ml-[324px] flex flex-col justify-center mt-6 mr-20">
-        <Search className='mb-4 float-end max-w-[320px]' />
+        <Search className="mb-4 float-end max-w-[320px]" />
         <Table aria-label="Example table with dynamic content">
           <TableHeader>
             {columns.map((column) => (
               <TableColumn
+                key={column.key}
                 className={`font-medium text-black
                   ${column.key === "status" && "w-[172px]"}
                   ${column.key === "action" && "w-[80px] content-center"}`}
-                key={column.key}
               >
                 {column.label}
               </TableColumn>

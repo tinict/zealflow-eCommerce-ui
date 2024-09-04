@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 import { Province, District, Ward } from "@/types/location";
 
-const InputAddress = ({edit, address, setAddress}: any) => {
+const InputAddress = ({ edit, address, setAddress }: any) => {
   const [provinces, setProvinces] = useState<Province[]>([]);
   const [districts, setDistricts] = useState<District[]>([]);
   const [wards, setWards] = useState<Ward[]>([]);
@@ -22,7 +23,7 @@ const InputAddress = ({edit, address, setAddress}: any) => {
     if (address.city) {
       axios
         .get<Province>(
-          `https://provinces.open-api.vn/api/p/${address.city}?depth=2`
+          `https://provinces.open-api.vn/api/p/${address.city}?depth=2`,
         )
         .then((response) => {
           setDistricts(response.data.districts);
@@ -35,7 +36,7 @@ const InputAddress = ({edit, address, setAddress}: any) => {
     if (address.district) {
       axios
         .get<District>(
-          `https://provinces.open-api.vn/api/d/${address.district}?depth=2`
+          `https://provinces.open-api.vn/api/d/${address.district}?depth=2`,
         )
         .then((response) => {
           setWards(response.data.wards);
@@ -49,9 +50,9 @@ const InputAddress = ({edit, address, setAddress}: any) => {
       <select
         className="  w-full h-[40px] border-1 border-gray-400 outline-none px-4 transition-all
         focus:border-red_main"
-        onChange={(e) => setAddress({...address, city:e.target.value})}
-        value={address.city}
         disabled={!edit}
+        value={address.city}
+        onChange={(e) => setAddress({ ...address, city: e.target.value })}
       >
         <option value="">Chọn tỉnh/thành phố</option>
         {provinces.map((province) => (
@@ -64,9 +65,9 @@ const InputAddress = ({edit, address, setAddress}: any) => {
       <select
         className="  w-full h-[40px] border-1 border-gray-400 outline-none px-4 transition-all
         focus:border-red_main"
-        onChange={(e) => setAddress({...address, district:e.target.value})}
-        value={address.district}
         disabled={!address.city && !edit}
+        value={address.district}
+        onChange={(e) => setAddress({ ...address, district: e.target.value })}
       >
         <option value="">Chọn quận/huyện</option>
         {districts.map((district) => (
@@ -79,9 +80,9 @@ const InputAddress = ({edit, address, setAddress}: any) => {
       <select
         className="  w-full h-[40px] border-1 border-gray-400 outline-none px-4 transition-all
         focus:border-red_main"
-        onChange={(e) => setAddress({...address, commune:e.target.value})}
-        value={address.commune}
         disabled={!address.district && !edit}
+        value={address.commune}
+        onChange={(e) => setAddress({ ...address, commune: e.target.value })}
       >
         <option value="">Chọn xã/phường</option>
         {wards.map((ward) => (

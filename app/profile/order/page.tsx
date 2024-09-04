@@ -9,6 +9,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
+
 import ButtonConfig from "@/components/Button";
 import EvaluateModal from "@/components/modals/order/EvaluateModal";
 
@@ -120,7 +121,7 @@ function OrderPage() {
       switch (columnKey) {
         case "order":
           return (
-            <img className="w-[60px] h-[60px]" src={cellValue} alt="order" />
+            <img alt="order" className="w-[60px] h-[60px]" src={cellValue} />
           );
         case "status":
           return (
@@ -136,8 +137,9 @@ function OrderPage() {
           return cellValue;
       }
     },
-    []
+    [],
   );
+
   return (
     <>
       <div className="w-full h-[80px] bg-yellow_main flex justify-center items-center relative">
@@ -150,10 +152,10 @@ function OrderPage() {
           <TableHeader>
             {columns.map((column) => (
               <TableColumn
+                key={column.key}
                 className={`font-medium text-black 
                   ${column.key === "status" && "w-[172px]"}
                   ${column.key === "action" && "w-[120px]"}`}
-                key={column.key}
               >
                 {column.label}
               </TableColumn>
@@ -163,9 +165,7 @@ function OrderPage() {
             {(item) => (
               <TableRow key={item.id}>
                 {(columnKey) => (
-                  <TableCell>
-                    {renderCell(item, columnKey)}
-                  </TableCell>
+                  <TableCell>{renderCell(item, columnKey)}</TableCell>
                 )}
               </TableRow>
             )}

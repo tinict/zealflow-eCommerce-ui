@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Modal,
   ModalContent,
@@ -7,9 +7,9 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/react";
-import ButtonConfig from "@/components/Button";
-import TextArea from "antd/es/input/TextArea";
 import { FiEdit } from "react-icons/fi";
+
+import ButtonConfig from "@/components/Button";
 
 export default function EditModal() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -24,11 +24,11 @@ export default function EditModal() {
 
   return (
     <div className="flex flex-col gap-2">
-      <FiEdit onClick={onOpen} className="cursor-pointer" />
+      <FiEdit className="cursor-pointer" onClick={onOpen} />
       <Modal
+        className="rounded-none"
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        className="rounded-none"
       >
         <ModalContent>
           {(onClose) => (
@@ -36,16 +36,12 @@ export default function EditModal() {
               <ModalHeader className="flex flex-col gap-1">
                 Chỉnh sửa bài đăng
               </ModalHeader>
-              <ModalBody>
-                
-              </ModalBody>
+              <ModalBody />
               <ModalFooter>
                 <ButtonConfig bordered onClick={onClose}>
                   Hủy
                 </ButtonConfig>
-                <ButtonConfig onClick={handleOK}>
-                  Xác nhận
-                </ButtonConfig>
+                <ButtonConfig onClick={handleOK}>Xác nhận</ButtonConfig>
               </ModalFooter>
             </>
           )}

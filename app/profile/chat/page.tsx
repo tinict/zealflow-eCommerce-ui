@@ -1,17 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
-import { SearchIcon } from "@/components/icons";
-import ChatSidebarItem from "@/components/sidebars/chat";
-import { Input } from "@nextui-org/input";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-
 import { FaCamera } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
 import { AiFillLike } from "react-icons/ai";
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react";
+
+import ChatSidebarItem from "@/components/sidebars/chat";
 import Search from "@/components/Search";
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/react";
 
 const users = [
   {
@@ -159,12 +162,12 @@ function ChatPage() {
           <div>
             {dataUser.map((user: any, index: number) => (
               <ChatSidebarItem
+                key={index}
                 className="flex justify-between p-4 cursor-pointer
               hover:bg-[#FFF4F4] focus:bg-[#FFF4F4] 
               "
-                onClick={() => handleClickUser(index)}
-                key={index}
                 user={user}
+                onClick={() => handleClickUser(index)}
               />
             ))}
           </div>
@@ -174,9 +177,9 @@ function ChatPage() {
             <div className="w-full flex items-center justify-between mb-2">
               <div className="flex gap-4">
                 <img
+                  alt="avatar"
                   className="w-[40px] h-[40px] rounded-full"
                   src={isUser.url_avatar}
-                  alt="avatar"
                 />
                 <div>
                   <p className="text-[14px] font-medium leading-3">
@@ -185,7 +188,7 @@ function ChatPage() {
                   <div className="flex items-center gap-1 mt-2">
                     <div
                       className={`${isUser.status === 1 ? "bg-green-500" : "bg-red-500"} w-2 h-2 rounded-full`}
-                    ></div>
+                    />
                     <small>
                       {isUser.status === 1
                         ? "Đang hoạt động"
@@ -231,9 +234,9 @@ function ChatPage() {
                     ) : (
                       <div className="float-start max-w-[60%] shadow-sm flex gap-2">
                         <img
+                          alt="avatar"
                           className="w-[32px] h-[32px] rounded-full"
                           src={isUser.url_avatar}
-                          alt="avatar"
                         />
                         <div>
                           <p className="mb-1">{mes.time}</p>
@@ -252,21 +255,21 @@ function ChatPage() {
                 </div>
 
                 <input
-                  onChange={(e) => setInputMessage(e.target.value)}
-                  value={inputMessage}
                   className="flex-1 border-none outline-none bg-transparent text-[14px]"
                   placeholder="Gõ tin nhắn ở đây"
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
                 />
 
                 {inputMessage ? (
                   <IoMdSend
-                    onClick={handleSendMessage}
                     className="text-[20px] cursor-pointer hover:text-gray-600 transition-all"
+                    onClick={handleSendMessage}
                   />
                 ) : (
                   <AiFillLike
-                    onClick={handleSendIcon}
                     className="text-[20px] cursor-pointer hover:text-gray-600 transition-all"
+                    onClick={handleSendIcon}
                   />
                 )}
               </div>

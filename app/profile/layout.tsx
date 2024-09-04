@@ -1,18 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-
-import ButtonConfig from "@/components/Button";
-import { siteConfig } from "@/config/site";
-import DefaultLayout from "@/layouts/DefaultLayout";
 import { AiOutlineMessage } from "react-icons/ai";
 import { MdPostAdd } from "react-icons/md";
 import { GoCreditCard } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa6";
 import { VscAccount } from "react-icons/vsc";
 import { FaWpforms } from "react-icons/fa";
+
 import SideBarItem from "@/components/sidebars/profile/SideBarItem";
-import { useRouter } from "next/router";
+import DefaultLayout from "@/layouts/DefaultLayout";
+import { siteConfig } from "@/config/site";
+import ButtonConfig from "@/components/Button";
 
 const sidebars = [
   {
@@ -55,9 +54,9 @@ function ProfileLayout({ children }: { children: React.ReactNode }) {
       <div className="w-[240px] h-[80vh] absolute top-[50%] translate-y-[-38%] translate-x-[40px] bg-white rounded-lg shadow-xl z-10">
         <div className="flex flex-col items-center p-6 gap-2">
           <img
+            alt="avatar"
             className="w-[52px] h-[52px] rounded-full"
             src="https://i.pinimg.com/564x/a7/13/01/a71301bf8fedea65a87068641c3658f9.jpg"
-            alt="avatar"
           />
           <p className="text-black font-medium">Nguyễn Văn Tín</p>
           <ButtonConfig full>Chỉnh sửa</ButtonConfig>
