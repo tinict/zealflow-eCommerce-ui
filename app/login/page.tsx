@@ -2,10 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
 import { Input } from "antd";
-import { images } from "@/assets";
 import { Button } from "@nextui-org/button";
+
+import { siteConfig } from "@/config/site";
+import { images } from "@/assets";
 
 function LoginPage() {
   return (
@@ -13,12 +14,9 @@ function LoginPage() {
       <Link href={siteConfig.routes.home} className="w-full flex justify-center my-4">
         <img className="w-[60%]" src={images.logo.src} alt="logo" />
       </Link>
-
       <p className="text-[32px] text-red_main text-center font-semibold mb-4">Đăng nhập</p>
-
       <Input className="h-[40px] rounded-none" placeholder="emali..." />
       <Input className="h-[40px] rounded-none" placeholder="password..." />
-
       <Button className="bg-red_main h-[40px] rounded-none text-white font-normal">Đăng nhập</Button>
       <p>
         Bạn mới biết đến Echop?{" "}

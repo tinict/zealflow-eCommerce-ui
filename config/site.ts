@@ -13,7 +13,6 @@ export const siteConfig = {
     post: '/profile/post',
     orderPackage: '/profile/order-package',
     favourite: '/profile/favourite',
-
   },
   navItems: [
     {
