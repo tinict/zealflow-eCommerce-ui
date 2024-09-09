@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/navbar";
 import React from "react";
-import { Link } from "@nextui-org/link";
 import Footer from "@/components/footer";
 
 function DefaultLayout({ children }: { children: React.ReactNode }) {
